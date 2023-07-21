@@ -312,6 +312,7 @@ function eliminarCliente() {
                         '<td>' + newClien.estadoC + '</td>' +
                         '<td>' + newClien.registroC + '</td>' +
                         '<td>' + newClien.emailC + '</td>' +
+                        '<td> <img src="img/' + newClien.foto + ' " width="100" > </td>' +
                         '<td>' + newClien.estatus + '</td></tr>';
 
         // Agregar la fila a la cadena "cuerpo"

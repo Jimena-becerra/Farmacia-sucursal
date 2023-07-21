@@ -282,6 +282,7 @@ function eliminarEmpleado() {
                         '<td>' + newEmp.estadoE + '</td>' +
                         '<td>' + newEmp.telefonoE + '</td>' +
                         '<td>' + newEmp.cpE + '</td>' +
+                        '<td> <img src="img/' + newEmp.fotoE + ' " width="100" > </td>' +
                         '<td>' + newEmp.estatus + '</td></tr>';
 
         // Agregar la fila a la cadena "cuerpo"
