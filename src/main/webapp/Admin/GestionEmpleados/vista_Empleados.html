@@ -55,7 +55,7 @@
        
               
               <h5>Foto</h5>
-              <img src="img/sicefa (1)_1.png"  id="txtFoto"  name="txtFoto" class="rounded" alt="..." width="150">
+              <img src="img/sicefa (1)_1.png"  id="txtFotoE"  name="txtFotoE" class="rounded" alt="..." width="150">
     
           </div>
              <div class="col-md-4 d-flex flex-column justify-content-center">
@@ -74,18 +74,18 @@
               
               <div class="mb-3">
                 <label for="input13">Nombre</label>
-                <input type="text" id="txtRfc" class="form-control" placeholder="Nombre">
+                <input type="text" id="txtnom" class="form-control" placeholder="Nombre">
               </div>
               <div class="mb-3">
                   <label for="input13">Apelldio Paterno</label>
-                <input type="text" id="txtRfc" class="form-control" placeholder="Apelldio Paterno">
+                <input type="text" id="txtpaternoE" class="form-control" placeholder="Apelldio Paterno">
                
                  
               </div>
         <div class="mb-1">
                 <label for="input32">Apellido Materno </label>
                    
-                <input type="text" id="txtdomicilio" class="form-control" placeholder="Apellido Materno ">
+                <input type="text" id="txtmaternoE" class="form-control" placeholder="Apellido Materno ">
               </div>
      
             
@@ -98,15 +98,15 @@
             
               <div class="mb-3">
                 <label for="input22">Fecha de Nacimiento</label>
-                <input type="date" id="txtciudad" class="form-control" placeholder="Curp">
+                <input type="date" id="txtNacimientoE" class="form-control" placeholder="Curp">
               </div>
               <div class="mb-3">
                 <label for="input23">RFC</label>
-                <input type="text" id="txtcodigoPostal" class="form-control" placeholder="RFC">
+                <input type="text" id="txtrfcE" class="form-control" placeholder="RFC">
               </div>
               <div class="mb-3">
                 <label for="input32">Curp</label>
-                <input type="text" id="txtlongitud" class="form-control" placeholder="Curp">
+                <input type="text" id="txtcurpE" class="form-control" placeholder="Curp">
               </div>
               
                 <div class="mb-3" >
@@ -123,12 +123,12 @@
               </div>
               <div class="mb-3">
               <label for="input32">Telefono</label>
-                <input type="text" id="txtlongitud" class="form-control" placeholder="Telefono">
+                <input type="text" id="txtelefonoE" class="form-control" placeholder="Telefono">
               </div>
                 
                 <div class="mb-3">
                <label for="estado">Estado:</label>
-                    <select id="txtestadoC" class="form-select">
+                    <select id="txtestadoE" class="form-select">
                      <option value="">-- Selecciona un estado --</option>
                      <option value="Aguascalientes">Aguascalientes</option>
                      <option value="Baja california">Baja california</option>
@@ -168,7 +168,7 @@
                   <div class="mb-4">
                 <label for="input32">CP </label>
                    
-                <input type="text" id="txtdomicilio" class="form-control" placeholder="CP">
+                <input type="text" id="txtcpE" class="form-control" placeholder="CP">
               </div>
            
                 </form>
@@ -178,12 +178,19 @@
           
             <div class="mt-0">
                   <label for="ciudades">Genero:</label>
-                <select id="txtestado" class="form-select">
+                <select id="txtgeneroE" class="form-select">
                   <option value="">-- Selecciona un genero --</option>
                  <option value="Hombre">Hombre</option> 
                   <option value="Mujer">Mujer</option> 
                   <option value="Otro">Otro</option> 
                    </select>
+              </div>
+          </div>
+          <div class="col-md-4 d-flex flex-column justify-content-center">
+          
+            <div class="mt-0">
+                 <label for="input32">Selecciona la fotografía del Empleado </label>
+                <input type="file" id="archivoE" class="form-control" placeholder="Longitud">
               </div>
           </div>
      
@@ -192,11 +199,11 @@
         <div class="row">
           <div class="d-flex justify-content-center mt-4">
               <!-- Agregar botón "Agregar" -->
-              <button type="button" class="btn btn-success mx-2" id="btnAgregar" onclick="agregarProducto();">Agregar</button>
+              <button type="button" class="btn btn-success mx-2" id="btnAgregar" onclick="agregarEmpleado();">Agregar</button>
               <!-- Agregar botón "Eliminar" -->
-              <button type="button" class="btn btn-danger mx-2" id="btnEliminar" onclick="eliminarSucursal();">Eliminar</button>
+              <button type="button" class="btn btn-danger mx-2" id="btnEliminar" onclick="eliminarEmpleado();">Eliminar</button>
               <!-- Agregar botón "Modificar" -->
-              <button type="button" class="btn btn-warning mx-2" id="btnModificar" onclick="modificaSucursal();">Modificar</button>
+              <button type="button" class="btn btn-warning mx-2" id="btnModificar" onclick="modificaEmpleado();">Modificar</button>
               <!-- Agregar botón "Limpiar" -->
               <button type="button" class="btn btn-secondary mx-2" id="btnLimpiar" onclick="limpiar();">Limpiar</button>
             </div>
@@ -209,8 +216,8 @@
                     <nav class="navbar navbar1 navbar-light">
                       <div class="container-fluid">
                         <form class="d-flex" role="search">
-                          <input class="form-control form-control-sm me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="txtBusquedaCliente">
-                          <button class="btn btn-outline-success btn-sm" type="button"  onclick="searchCliente();">Buscar</button>
+                          <input class="form-control form-control-sm me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="txtBusquedaEmpleado">
+                          <button class="btn btn-outline-success btn-sm" type="button"  onclick="searchEmpleado();">Buscar</button>
                         </form>
                       </div>
                     </nav>
@@ -238,7 +245,7 @@
                             <th scope="col">Estatus</th>
                             </tr>
                         </thead>
-                        <tbody id="tblProductos"  class="" >
+                        <tbody id="tblEmpleados"  class="" >
                            
                         </tbody>
                     </table>
@@ -251,7 +258,7 @@
         
  
      
-      <script src="../GestionClientes/controlador_Clientes.js "></script>
+      <script src="../GestionEmpleados/controlador_Empleados.js"></script>
       <script src="../Styles/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
 </body>

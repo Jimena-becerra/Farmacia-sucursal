@@ -72,19 +72,19 @@
             <form class="text-start">
               <div class="mb-3">
                 <label for="input11">Nombre </label>
-                <input type="text" id="txtnomSuc" class="form-control" placeholder="Nombre ">
+                <input type="text" id="txtnom" class="form-control" placeholder="Nombre ">
               </div>
               <div class="mb-3">
                 <label for="input12">Apellido Paterno</label>
-                <input type="text" id="txtnomTit" class="form-control" placeholder="Apeliido Paterno">
+                <input type="text" id="txtpaternoC" class="form-control" placeholder="Apeliido Paterno">
               </div>
               <div class="mb-3">
                 <label for="input13">Apellido Materno</label>
-                <input type="text" id="txtRfc" class="form-control" placeholder="Apeliido Materno">
+                <input type="text" id="txtmaternoC" class="form-control" placeholder="Apeliido Materno">
               </div>
               <div class="mb-3">
                  <label for="ciudades">Genero:</label>
-                <select id="txtestado" class="form-select">
+                <select id="txtgeneroC" class="form-select">
                   <option value="">-- Selecciona un genero --</option>
                  <option value="Hombre">Hombre</option> 
                   <option value="Mujer">Mujer</option> 
@@ -95,7 +95,7 @@
         <div class="mb-3">
                 <label for="input32">Fecha de Nacimiento </label>
                    
-                <input type="date" id="txtdomicilio" class="form-control" placeholder="Unidades en envase">
+                <input type="date" id="txtNacimientoC" class="form-control" placeholder="Unidades en envase">
               </div>
      
             
@@ -107,24 +107,24 @@
             <form class="text-start">
               <div class="mb-3">
                 <label for="input21">RFC</label>
-                <input type="text" id="txtcolonia" class="form-control" placeholder="RFC">
+                <input type="text" id="txtrfcC" class="form-control" placeholder="RFC">
               </div>
               <div class="mb-3">
                 <label for="input22">Curp</label>
-                <input type="text" id="txtciudad" class="form-control" placeholder="Curp">
+                <input type="text" id="txtcurpC" class="form-control" placeholder="Curp">
               </div>
               <div class="mb-3">
                 <label for="input23">Telefono</label>
-                <input type="text" id="txtcodigoPostal" class="form-control" placeholder="Telefono">
+                <input type="text" id="txtelefonoC" class="form-control" placeholder="Telefono">
               </div>
               <div class="mb-3">
                 <label for="input32">Domicilio</label>
-                <input type="text" id="txtlongitud" class="form-control" placeholder="Domicilio">
+                <input type="text" id="txtdomicilioC" class="form-control" placeholder="Domicilio">
               </div>
              <div class="mb-3">
                 <label for="input32">CP</label>
                
-                <input type="text" id="txttelefono" class="form-control" placeholder="CP">
+                <input type="text" id="txtcpC" class="form-control" placeholder="CP">
               </div>
                 <div class="mb-3" >
                     
@@ -139,14 +139,14 @@
            
               <div class="mb-3">
                 <label for="input32">Selecciona la fotografía del cliente </label>
-                <input type="file" id="txtlongitud" class="form-control" placeholder="Longitud">
+                <input type="file" id="archivo" class="form-control" placeholder="Longitud">
               </div>
               <div class="mb-3">
                
               </div>
               <div class="mb-3">
                 <label for="input33">Ciudad</label>
-                <input type="text" id="txtlatitud" class="form-control" placeholder="Ciudad">
+                <input type="text" id="txtciudadC" class="form-control" placeholder="Ciudad">
               </div>
                 
                 <div class="mb-3">
@@ -191,12 +191,12 @@
                   <div class="mb-3">
                 <label for="input32">Fecha de Registro </label>
                    
-                <input type="date" id="txtdomicilio" class="form-control" placeholder="Unidades en envase">
+                <input type="date" id="txtregistroC" class="form-control" placeholder="Unidades en envase">
               </div>
            <div class="mb-3">
                 <label for="input32">Email</label>
                
-                <input type="text" id="txttelefono" class="form-control" placeholder="Email">
+                <input type="text" id="txtemailC" class="form-control" placeholder="Email">
               </div>
             </form>
           </div>
@@ -208,11 +208,11 @@
         <div class="row">
           <div class="d-flex justify-content-center mt-4">
               <!-- Agregar botón "Agregar" -->
-              <button type="button" class="btn btn-success mx-2" id="btnAgregar" onclick="agregarProducto();">Agregar</button>
+              <button type="button" class="btn btn-success mx-2" id="btnAgregar" onclick="agregarCliente();">Agregar</button>
               <!-- Agregar botón "Eliminar" -->
-              <button type="button" class="btn btn-danger mx-2" id="btnEliminar" onclick="eliminarSucursal();">Eliminar</button>
+              <button type="button" class="btn btn-danger mx-2" id="btnEliminar" onclick="eliminarCliente();">Eliminar</button>
               <!-- Agregar botón "Modificar" -->
-              <button type="button" class="btn btn-warning mx-2" id="btnModificar" onclick="modificaSucursal();">Modificar</button>
+              <button type="button" class="btn btn-warning mx-2" id="btnModificar" onclick="modificaCliente();">Modificar</button>
               <!-- Agregar botón "Limpiar" -->
               <button type="button" class="btn btn-secondary mx-2" id="btnLimpiar" onclick="limpiar();">Limpiar</button>
             </div>
@@ -258,7 +258,7 @@
                             <th scope="col">Estatus</th>
                             </tr>
                         </thead>
-                        <tbody id="tblProductos"  class="" >
+                        <tbody id="tblClientes"  class="" >
                            
                         </tbody>
                     </table>
