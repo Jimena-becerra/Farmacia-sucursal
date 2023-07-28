@@ -208,7 +208,6 @@ function limpiar() {
   function modificarRegistro() {
    let nomE, apaternoE, amaternoE, generoE, nacimientoE, rfcE, curpE, ciudadE,estadoE,cpE,domicilioE, telefonoE, 
          ingresoE,puestoE,salarioE,emailE,codigoE;
-
     nomE = document.getElementById("txtnom").value;
     apaternoE = document.getElementById("txtpaternoE").value;
     amaternoE = document.getElementById("txtmaternoE").value;
