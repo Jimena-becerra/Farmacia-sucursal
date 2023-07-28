@@ -47,8 +47,8 @@
           </button>
         </div>
       </nav>
-      <br><br><br>
-      <h1 class="text-center ">Gestion Empleados</h1>
+      <br><br><br><br>
+      <h1 class="text-center ">Gestión Empleados</h1>
       <div class="container">
         <div class="row">
           <div class="col-md-4 d-flex flex-column justify-content-center">
@@ -77,7 +77,7 @@
                 <input type="text" id="txtnom" class="form-control" placeholder="Nombre">
               </div>
               <div class="mb-3">
-                  <label for="input13">Apelldio Paterno</label>
+                  <label for="input13">Apellido Paterno</label>
                 <input type="text" id="txtpaternoE" class="form-control" placeholder="Apelldio Paterno">
                
                  
@@ -88,7 +88,15 @@
                 <input type="text" id="txtmaternoE" class="form-control" placeholder="Apellido Materno ">
               </div>
      
-            
+            <div class="mb-3">
+                  <label for="ciudades">Genero:</label>
+                <select id="txtgeneroE" class="form-select">
+                  <option value="">-- Selecciona un genero --</option>
+                 <option value="Hombre">Hombre</option> 
+                  <option value="Mujer">Mujer</option> 
+                  <option value="Otro">Otro</option> 
+                   </select>
+              </div>
           </div>
           <br><br>
           <!-- Segunda columna -->
@@ -98,7 +106,7 @@
             
               <div class="mb-3">
                 <label for="input22">Fecha de Nacimiento</label>
-                <input type="date" id="txtNacimientoE" class="form-control" placeholder="Curp">
+                <input type="date" id="txtNacimientoE" class="form-control" placeholder="Fecha de Nacimiento">
               </div>
               <div class="mb-3">
                 <label for="input23">RFC</label>
@@ -110,7 +118,10 @@
               </div>
               
                 <div class="mb-3" >
-                    
+                    <div class="mb-3">
+                <label for="input32">Teléfono</label>
+                <input type="text" id="txtelefonoE" class="form-control" placeholder="Telefono">
+              </div>
                 </div>
             
           </div>
@@ -121,11 +132,7 @@
               <div class="mb-3">
                
               </div>
-              <div class="mb-3">
-              <label for="input32">Telefono</label>
-                <input type="text" id="txtelefonoE" class="form-control" placeholder="Telefono">
-              </div>
-                
+  
                 <div class="mb-3">
                <label for="estado">Estado:</label>
                     <select id="txtestadoE" class="form-select">
@@ -165,36 +172,67 @@
                      <option value="Nacido en el extranjero">Nacido en el extranjero</option>
                     </select>
               </div>
+                <div class="mb-3">
+              <label for="input32">Ciudad</label>
+                <input type="text" id="txtciudadE" class="form-control" placeholder="Ciudad">
+              </div>
                   <div class="mb-4">
-                <label for="input32">CP </label>
-                   
+                <label for="input32">CP </label>    
                 <input type="text" id="txtcpE" class="form-control" placeholder="CP">
               </div>
-           
+           <div class="mb-3">
+                <label for="input32">Domicilio </label>    
+                <input type="text" id="txtDomicilioE" class="form-control" placeholder="Domicilio">
+              </div>
+                
                 </form>
           </div>
 
            <div class="col-md-4 d-flex flex-column justify-content-center">
           
             <div class="mt-0">
-                  <label for="ciudades">Genero:</label>
-                <select id="txtgeneroE" class="form-select">
-                  <option value="">-- Selecciona un genero --</option>
-                 <option value="Hombre">Hombre</option> 
-                  <option value="Mujer">Mujer</option> 
-                  <option value="Otro">Otro</option> 
-                   </select>
+                 <label for="input22">Fecha de Ingreso</label>
+                <input type="date" id="txtIngresoE" class="form-control" placeholder="Fecha de Ingreso">
               </div>
           </div>
           <div class="col-md-4 d-flex flex-column justify-content-center">
           
             <div class="mt-0">
+                 <label for="input32">Puesto </label>    
+                <input type="text" id="txtPuestoE" class="form-control" placeholder="Puesto">
+              </div>
+          </div>  
+          <div class="col-md-4 d-flex flex-column justify-content-center">
+          
+            <div class="mt-0">
+                 <label for="input32">Salario </label>    
+                <input type="text" id="txtSalarioE" class="form-control" placeholder="Salario">
+              </div>
+          </div>  
+          <div class="col-md-4 d-flex flex-column justify-content-center">
+              <br>
+            <div class="mt-0">
+               <label for="input32">Email</label>
+                <input type="text" id="txtemailE" class="form-control" placeholder="Email">
+              </div>
+          </div>
+          <div class="col-md-4 d-flex flex-column justify-content-center">
+              <br>
+            <div class="mt-0">
+                 <label for="input32">Codigo del empleado </label>    
+                <input type="text" id="txtCodigoE" class="form-control" placeholder="Codigo">
+              </div>
+          </div>  
+          <div class="col-md-4 d-flex flex-column justify-content-center">
+              <br>
+            <div class="mt-0">
                  <label for="input32">Selecciona la fotografía del Empleado </label>
                 <input type="file" id="archivoE" class="form-control" placeholder="Longitud">
               </div>
-          </div>  
-          
-        </div>
+          </div> 
+
+   
+
         <div class="row">
           <div class="d-flex justify-content-center mt-4">
               <!-- Agregar botón "Agregar" -->
@@ -237,9 +275,16 @@
                             <th scope="col">Fecha de Nacimiento</th>
                             <th scope="col">RFC</th>
                             <th scope="col">CURP</th>
+                            <th scope="col">Ciudad</th>
                             <th scope="col">Estado</th>
-                            <th scope="col">Telefono</th>
                             <th scope="col">CP</th>
+                            <th scope="col">Domicilio</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Fecha de Ingreso</th>
+                            <th scope="col">Puesto</th>
+                            <th scope="col">Salario</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Codigo del empleado</th>
                             <th scope="col">Foto</th>
                             <th scope="col">Estatus</th>
                             </tr>
