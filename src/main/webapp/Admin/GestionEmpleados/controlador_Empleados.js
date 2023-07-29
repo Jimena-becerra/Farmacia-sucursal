@@ -1,18 +1,48 @@
 let indexEmpleado; // es el índice del arreglo
 let obj = []; // arreglo que se llenará de objetos JSON
+let ultimoCodigo;
 
-var text = '{"empleado":[ ' +
-  '{"nomE" : "Karen", "apaternoE" : "Carmona", "amaternoE" : "Rodríguez", "generoE" : "Mujer","nacimientoE" : "1990-07-26", "rfcE" : "CARJ900726F31","curpE" : "CARJ900726MGTRDR","ciudadE" : "León", "estadoE" : "Guanajuato","cpE" : "37100","domicilioE" : "Hacienda Echeveste","telefonoE" : "4771239868","ingresoE" : "1990-07-26","puestoE" : "Empleado","salarioE" : "1600","emailE" : "@gmail.com", "codigoE" : "123qwe","fotoE": "M1.jpeg", "estatus" : "Activo"},'+
-  '{"nomE" : "Alejandro", "apaternoE" : "Fernandez", "amaternoE" : "Morales", "generoE" : "Hombre","nacimientoE" : "1987-06-25", "rfcE" : "FEMA870625F30","curpE" : "FEMA870625HGTRRL", "ciudadE" : "León","estadoE" : "Guanajuato","cpE" : "37545","domicilioE" : "Hacienda Echeveste","telefonoE" : "4770988865","ingresoE" : "1990-07-26","puestoE" : "Empleado", "salarioE" : "1600","emailE" : "@gmail.com","codigoE" : "123qwe","fotoE": "H1.jpeg", "estatus" : "Activo"},'+
-  '{"nomE" : "Valeria", "apaternoE" : "Martínez", "amaternoE" : "Reyes", "generoE" : "Mujer","nacimientoE" : "1996-06-21", "rfcE" : "MARV960621F29","curpE" : "MARV960621MGTRYL","ciudadE" : "León", "estadoE" : "Guanajuato","cpE" : "37170","domicilioE" : "Hacienda Echeveste","telefonoE" : "4779871123","ingresoE" : "1990-07-26","puestoE" : "Empleado","salarioE" : "1600","emailE" : "@gmail.com","codigoE" : "123qwe","fotoE": "M2.jpeg", "estatus" : "Activo"},'+
-  '{"nomE" : "Jose Luis", "apaternoE" : "Pérez", "amaternoE" : "Jiménez", "generoE" : "Hombre","nacimientoE" : "1980-11-03", "rfcE" : "PEJJ801103F45","curpE" : "PEJJ801103HGTRMS","ciudadE" : "León", "estadoE" : "Guanajuato","cpE" : "37100","domicilioE" : "Hacienda Echeveste","telefonoE" : "4774547876","ingresoE" : "1990-07-26","puestoE" : "Empleado","salarioE" : "1600","emailE" : "@gmail.com","codigoE" : "123qwe","fotoE": "H2.jpeg", "estatus" : "Activo"},'+
-  '{"nomE" : "Andrea", "apaternoE" : "Sánchez", "amaternoE" : "Torres", "generoE" : "Mujer","nacimientoE" : "1998-09-16", "rfcE" : "SATA980916F56","curpE" : "SATA980916MGTNRN","ciudadE" : "León", "estadoE" : "Guanajuato","cpE" : "37109","domicilioE" : "Hacienda Echeveste","telefonoE" : "4779817734","ingresoE" : "1990-07-26","puestoE" : "Empleado","salarioE" : "1600","emailE" : "@gmail.com","codigoE" : "123qwe","fotoE": "M3.jpeg", "estatus" : "Activo"},'+
-  '{"nomE" : "Angel", "apaternoE" : "Cruz", "amaternoE" : "Díaz", "generoE" : "Hombre","nacimientoE" : "1997-12-27", "rfcE" : "CRDA971227F14","curpE" : "CRDA971227HGTRZN", "ciudadE" : "León","estadoE" : "Guanajuato","cpE" : "37440","domicilioE" : "Hacienda Echeveste","telefonoE" : "4772349812","ingresoE" : "1990-07-26","puestoE" : "Empleado","salarioE" : "1600","emailE" : "@gmail.com","codigoE" : "123qwe","fotoE": "H3.jpeg", "estatus" : "Activo"},'+
-  '{"nomE" : "Danna", "apaternoE" : "Flores", "amaternoE" : "Rodríguez", "generoE" : "Mujer","nacimientoE" : "1996-04-04", "rfcE" : "FLRD960404F18","curpE" : "FLRD960404MGTLDN","ciudadE" : "León", "estadoE" : "Guanajuato", "cpE" : "37425","domicilioE" : "Hacienda Echeveste","telefonoE" : "4773865634","ingresoE" : "1990-07-26","puestoE" : "Empleado","salarioE" : "1600","emailE" : "@gmail.com","codigoE" : "123qwe","fotoE": "M4.jpeg", "estatus" : "Activo"},'+
-  '{"nomE" : "Andres", "apaternoE" : "Morales", "amaternoE" : "Sánchez", "generoE" : "Hombre","nacimientoE" : "1996-06-01", "rfcE" : "MOSA960601F20","curpE" : "MOSA960601HGTRNN","ciudadE" : "León", "estadoE" : "Guanajuato", "cpE" : "37125", "domicilioE" : "Hacienda Echeveste","telefonoE" : "4779885654","ingresoE" : "1990-07-26","puestoE" : "Empleado","salarioE" : "1600","emailE" : "@gmail.com","codigoE" : "123qwe","fotoE": "H4.jpeg", "estatus" : "Activo"},'+
-  '{"nomE" : "Nancy", "apaternoE" : "Vázquez", "amaternoE" : "Pérez", "generoE" : "Mujer","nacimientoE" : "1987-02-26", "rfcE" : "VAPN870226F12","curpE" : "VAPN870226MGTZRN","ciudadE" : "León", "estadoE" : "Guanajuato", "cpE" : "37295", "domicilioE" : "Hacienda Echeveste","telefonoE" : "4774586754","ingresoE" : "1990-07-26","puestoE" : "Empleado","salarioE" : "1600","emailE" : "@gmail.com","codigoE" : "123qwe","fotoE": "M5.jpeg", "estatus" : "Activo"},'+
-  '{"nomE" : "Antonio","apaternoE" : "Lopez", "amaternoE" : "Martínez", "generoE" : "Hombre","nacimientoE" : "1997-08-20","rfcE" : "LOMA970820F06", "curpE" : "LOMA970820HGTPTN","ciudadE" : "León", "estadoE" : "Guanajuato","cpE" : "37355", "domicilioE" : "Hacienda Echeveste","telefonoE" : "4774328976","ingresoE" : "1990-07-26","puestoE" : "Empleado","salarioE" : "1600","emailE" : "@gmail.com","codigoE" : "123qwe","fotoE": "H5.jpeg", "estatus" : "Activo"} ] }'; 
-  
+var text = '{"empleado":[ ' +      
+  '{"codigoE" : "15060011", "ingresoE" : "2015-06-15", "puestoE" : "Gerente", "salarioE" : "90 000", "estatus" : "Activo", ' +  
+  ' "persona" : {"nomE" : "Karen", "apaternoE" : "Carmona", "amaternoE" : "Pérez",   "generoE": "Mujer","nacimientoE" : "1990-07-26", "curpE" : "CARJ900726MGTRDR","rfcE" : "CARJ900726F31","emailE" : "KarenCar@gmail.com","telefonoE" : "4771239868", "fotoE" : "M1.jpeg" }, '+
+  ' "direccion" : {"ciudadE" : "León", "estadoE" : "Guanajuato","cpE" : "37100", "domicilioE" : "Echeveste" }' +     
+  '},'+
+  '{"codigoE" : "15060011", "ingresoE" : "2015-06-15", "puestoE" : "Gerente", "salarioE" : "90 000", "estatus" : "Activo", ' +  
+ ' "persona" : {"nomE" : "Alejandro", "apaternoE" : "Fernandez", "amaternoE" : "Morales",   "generoE": "Hombre","nacimientoE" : "1987-06-25", "curpE" : "FEMA870625HGTRRL","rfcE" : "FEMA870625F30","emailE" : "Afernandez@gmail.com","telefonoE" : "4770988865", "fotoE" : "H1.jpeg" }, '+
+ ' "direccion" : {"ciudadE" : "León", "estadoE" : "Guanajuato","cpE" : "37545", "domicilioE" : "Hacienda Echeveste" }' +     
+ '},'+
+ '{"codigoE" : "15060011", "ingresoE" : "2015-06-15", "puestoE" : "Gerente", "salarioE" : "90 000", "estatus" : "Activo", ' +  
+ ' "persona" : {"nomE" : "Alejandro", "apaternoE" : "Fernandez", "amaternoE" : "Morales",   "generoE": "Hombre","nacimientoE" : "1987-06-25", "curpE" : "FEMA870625HGTRRL","rfcE" : "FEMA870625F30","emailE" : "Afernandez@gmail.com","telefonoE" : "4770988865", "fotoE" : "H1.jpeg" }, '+
+ ' "direccion" : {"ciudadE" : "León", "estadoE" : "Guanajuato","cpE" : "37545", "domicilioE" : "Hacienda Echeveste" }' +     
+ '},'+
+ '{"codigoE" : "15060011", "ingresoE" : "2015-06-15", "puestoE" : "Gerente", "salarioE" : "90 000", "estatus" : "Activo", ' +  
+ ' "persona" : {"nomE" : "Alejandro", "apaternoE" : "Fernandez", "amaternoE" : "Morales",   "generoE": "Hombre","nacimientoE" : "1987-06-25", "curpE" : "FEMA870625HGTRRL","rfcE" : "FEMA870625F30","emailE" : "Afernandez@gmail.com","telefonoE" : "4770988865", "fotoE" : "H1.jpeg" }, '+
+ ' "direccion" : {"ciudadE" : "León", "estadoE" : "Guanajuato","cpE" : "37545", "domicilioE" : "Hacienda Echeveste" }' +     
+ '},'+
+ '{"codigoE" : "15060011", "ingresoE" : "2015-06-15", "puestoE" : "Gerente", "salarioE" : "90 000", "estatus" : "Activo", ' +  
+ ' "persona" : {"nomE" : "Alejandro", "apaternoE" : "Fernandez", "amaternoE" : "Morales",   "generoE": "Hombre","nacimientoE" : "1987-06-25", "curpE" : "FEMA870625HGTRRL","rfcE" : "FEMA870625F30","emailE" : "Afernandez@gmail.com","telefonoE" : "4770988865", "fotoE" : "H1.jpeg" }, '+
+ ' "direccion" : {"ciudadE" : "León", "estadoE" : "Guanajuato","cpE" : "37545", "domicilioE" : "Hacienda Echeveste" }' +     
+ '},'+
+ '{"codigoE" : "15060011", "ingresoE" : "2015-06-15", "puestoE" : "Gerente", "salarioE" : "90 000", "estatus" : "Activo", ' +  
+ ' "persona" : {"nomE" : "Alejandro", "apaternoE" : "Fernandez", "amaternoE" : "Morales",   "generoE": "Hombre","nacimientoE" : "1987-06-25", "curpE" : "FEMA870625HGTRRL","rfcE" : "FEMA870625F30","emailE" : "Afernandez@gmail.com","telefonoE" : "4770988865", "fotoE" : "H1.jpeg" }, '+
+ ' "direccion" : {"ciudadE" : "León", "estadoE" : "Guanajuato","cpE" : "37545", "domicilioE" : "Hacienda Echeveste" }' +     
+ '},'+
+ '{"codigoE" : "15060011", "ingresoE" : "2015-06-15", "puestoE" : "Gerente", "salarioE" : "90 000", "estatus" : "Activo", ' +  
+ ' "persona" : {"nomE" : "Alejandro", "apaternoE" : "Fernandez", "amaternoE" : "Morales",   "generoE": "Hombre","nacimientoE" : "1987-06-25", "curpE" : "FEMA870625HGTRRL","rfcE" : "FEMA870625F30","emailE" : "Afernandez@gmail.com","telefonoE" : "4770988865", "fotoE" : "H1.jpeg" }, '+
+ ' "direccion" : {"ciudadE" : "León", "estadoE" : "Guanajuato","cpE" : "37545", "domicilioE" : "Hacienda Echeveste" }' +     
+ '},'+
+ '{"codigoE" : "15060011", "ingresoE" : "2015-06-15", "puestoE" : "Gerente", "salarioE" : "90 000", "estatus" : "Activo", ' +  
+ ' "persona" : {"nomE" : "Alejandro", "apaternoE" : "Fernandez", "amaternoE" : "Morales",   "generoE": "Hombre","nacimientoE" : "1987-06-25", "curpE" : "FEMA870625HGTRRL","rfcE" : "FEMA870625F30","emailE" : "Afernandez@gmail.com","telefonoE" : "4770988865", "fotoE" : "H1.jpeg" }, '+
+ ' "direccion" : {"ciudadE" : "León", "estadoE" : "Guanajuato","cpE" : "37545", "domicilioE" : "Hacienda Echeveste" }' +     
+ '},'+
+ '{"codigoE" : "15060011", "ingresoE" : "2015-06-15", "puestoE" : "Gerente", "salarioE" : "90 000", "estatus" : "Activo", ' +  
+ ' "persona" : {"nomE" : "Alejandro", "apaternoE" : "Fernandez", "amaternoE" : "Morales",   "generoE": "Hombre","nacimientoE" : "1987-06-25", "curpE" : "FEMA870625HGTRRL","rfcE" : "FEMA870625F30","emailE" : "Afernandez@gmail.com","telefonoE" : "4770988865", "fotoE" : "H1.jpeg" }, '+
+ ' "direccion" : {"ciudadE" : "León", "estadoE" : "Guanajuato","cpE" : "37545", "domicilioE" : "Hacienda Echeveste" }' +     
+ '},'+
+  '{"codigoE" : "15060011", "ingresoE" : "2015-06-15", "puestoE" : "Gerente", "salarioE" : "90 000", "estatus" : "Activo", ' +  
+   ' "persona" : {"nomE" : "Antonio", "apaternoE" : "Lopez", "amaternoE" : "Martínez",   "generoE": "Hombre","nacimientoE" : "1997-08-20", "curpE" : "LOMA970820HGTPTN","rfcE" : "LOMA970820F06","emailE" : "AntonioLopez@gmail.com","telefonoE" : "4774328976", "fotoE" : "M2.jpeg" }, '+
+   ' "direccion" : {"ciudadE" : "León", "estadoE" : "Guanajuato","cpE" : "37355", "domicilioE" : "ADMS" }' +    
+   '} ] }';
 obj = JSON.parse(text);
 console.log(obj);
 actualizaTabla();
@@ -23,26 +53,14 @@ function actualizaTabla() {
         let registro =
                 '<tr onclick="selectEmpleado(' + obj.empleado.indexOf(elemento) + ');">' +
                 '<td>' + obj.empleado.indexOf(elemento) + '</td>' +
-                '<td>' + elemento.nomE + '</td>' +
-                '<td>' + elemento.apaternoE + '</td>' +
-                '<td>' + elemento.amaternoE + '</td>' +
-                '<td>' + elemento.generoE + '</td>' +
-                '<td>' + elemento.nacimientoE + '</td>' +
-                '<td>' + elemento.rfcE + '</td>' +
-                '<td>' + elemento.curpE + '</td>' +
-                '<td>' + elemento.ciudadE + '</td>' +
-                '<td>' + elemento.estadoE + '</td>' +
-                '<td>' + elemento.cpE + '</td>' +
-                '<td>' + elemento.domicilioE + '</td>' +
-                '<td>' + elemento.telefonoE + '</td>' +
-                '<td>' + elemento.ingresoE + '</td>' +
-                '<td>' + elemento.puestoE + '</td>' +
-                '<td>' + elemento.salarioE + '</td>' +
-                '<td>' + elemento.emailE + '</td>' +
                 '<td>' + elemento.codigoE + '</td>' +
-                '<td> <img src="img/' + elemento.fotoE + ' " width="100" > </td>' +
+                '<td>' + elemento.persona.nomE + " " + elemento.persona.apaternoE +  " " + elemento.persona.amaternoE +'</td>' +
+                '<td>' + elemento.persona.telefonoE+'</td>' +
+                '<td>' + elemento.persona.emailE+'</td>' +
+                '<td>' + elemento.direccion.domicilioE+ " "+ elemento.direccion.cpE+'</td>' +
+                '<td> <img src="img/' + elemento.persona.fotoE + ' " width="100" > </td>' +
                 '<td>' + elemento.estatus + '</td></tr>';
-
+                ultimoCodigo=elemento.codigoE;
         cuerpo += registro;
     });
     document.getElementById("tblEmpleados").innerHTML = cuerpo;
@@ -50,26 +68,27 @@ function actualizaTabla() {
 
 // selección del producto de acuerdo al índice del arreglo
 function selectEmpleado(index) {
-    document.getElementById("txtnom").value = obj.empleado[index].nomE;
-    document.getElementById("txtpaternoE").value = obj.empleado[index].apaternoE;
-    document.getElementById("txtmaternoE").value = obj.empleado[index].amaternoE;
-    document.getElementById("txtgeneroE").value = obj.empleado[index].generoE;
-    document.getElementById("txtNacimientoE").value = obj.empleado[index].nacimientoE;
-    document.getElementById("txtrfcE").value = obj.empleado[index].rfcE;
-    document.getElementById("txtcurpE").value = obj.empleado[index].curpE;
-    document.getElementById("txtciudadE").value = obj.empleado[index].ciudadE;
-    document.getElementById("txtestadoE").value = obj.empleado[index].estadoE;
-    document.getElementById("txtcpE").value = obj.empleado[index].cpE;
-    document.getElementById("txtDomicilioE").value = obj.empleado[index].domicilioE;
-    document.getElementById("txtelefonoE").value = obj.empleado[index].telefonoE;
+    document.getElementById("txtnom").value = obj.empleado[index].persona.nomE;
+    document.getElementById("txtpaternoE").value = obj.empleado[index].persona.apaternoE;
+    document.getElementById("txtmaternoE").value = obj.empleado[index].persona.amaternoE;
+    document.getElementById("txtgeneroE").value = obj.empleado[index].persona.generoE;
+    document.getElementById("txtNacimientoE").value = obj.empleado[index].persona.nacimientoE;
+    document.getElementById("txtrfcE").value = obj.empleado[index].persona.rfcE;
+    document.getElementById("txtcurpE").value = obj.empleado[index].persona.curpE;
+    document.getElementById("txtciudadE").value = obj.empleado[index].direccion.ciudadE;
+    document.getElementById("txtestadoE").value = obj.empleado[index].direccion.estadoE;
+    document.getElementById("txtcpE").value = obj.empleado[index].direccion.cpE;
+    document.getElementById("txtDomicilioE").value = obj.empleado[index].direccion.domicilioE;
+    document.getElementById("txtelefonoE").value = obj.empleado[index].persona.telefonoE;
     document.getElementById("txtIngresoE").value = obj.empleado[index].ingresoE;
     document.getElementById("txtPuestoE").value = obj.empleado[index].puestoE;
     document.getElementById("txtSalarioE").value = obj.empleado[index].salarioE;
-    document.getElementById("txtemailE").value = obj.empleado[index].emailE;
+    document.getElementById("txtemailE").value = obj.empleado[index].persona.emailE;
     document.getElementById("txtCodigoE").value = obj.empleado[index].codigoE;
     
     let ruta = 'img/';
-        document.getElementById("txtFotoE").src = ruta + obj.empleado[index].fotoE;
+    document.getElementById("txtFotoE").src = ruta + obj.empleado[index].persona.fotoE;
+    document.getElementById("archivoE").value =  "";
     
     document.getElementById("btnModificar").classList.remove("disabled");
     document.getElementById("btnEliminar").classList.remove("disabled");
@@ -95,13 +114,12 @@ function validarCampos() {
     const puesto = document.getElementById('txtPuestoE').value;
     const salario = document.getElementById('txtSalarioE').value;
     const email = document.getElementById('txtemailE').value;
-    const codigo = document.getElementById('txtCodigoE').value;
 
 
     // Verificar si algún campo está vacío
     if (nombre == '' || apaterno == '' || amaterno == '' || genero == '' || fnacimiento == '' ||
         rfc == '' || curp == ''|| ciudad == '' || estado == '' ||cp == '' || domicilio == '' || 
-        telefono == ''||ingreso == ''||puesto == ''||salario == ''||email == ''|| codigo == '') {
+        telefono == ''||ingreso == ''||puesto == ''||salario == ''||email == '') {
       //Alerta para llenar todos los campos
       alertCampos();
       return false; // Cancelar la acción de agregar el producto
@@ -137,7 +155,7 @@ function agregarEmpleado() {
     cpE = document.getElementById("txtcpE").value;
     domicilioE = document.getElementById("txtDomicilioE").value;
     telefonoE = document.getElementById("txtelefonoE").value;
-    puestoE = document.getElementById("txtIngresoE").value;
+    generaCodigo(document.getElementById("txtIngresoE").value);
     puestoE = document.getElementById("txtPuestoE").value;
     salarioE = document.getElementById("txtSalarioE").value;
     emailE = document.getElementById("txtemailE").value;
@@ -145,31 +163,29 @@ function agregarEmpleado() {
     fotoE = document.getElementById("archivoE").value;
     
     let newEmp = {};
-    newEmp .nomE = nomE;
-    newEmp .apaternoE = apaternoE;
-    newEmp .amaternoE = amaternoE;
-    newEmp .generoE = generoE;
-    newEmp .nacimientoE = nacimientoE;
-    newEmp .rfcE = rfcE;
-    newEmp .curpE = curpE;
-    newEmp .ciudadE = ciudadE;
-    newEmp .estadoE = estadoE;
-    newEmp .cpE = cpE;
-    newEmp .domicilioE = domicilioE;
-    newEmp .telefonoE = telefonoE;
-    newEmp .ingresoE = ingresoE;
-    newEmp .puestoE = puestoE;
-    newEmp .salarioE = salarioE;
-    newEmp .emailE = emailE;
-    newEmp .codigoE = codigoE;
-
-    
-    newEmp.fotoE = fotoE;
-    
-    newEmp .estatus = "Activo";
+    newEmp.codigoE= codigoE;
+    newEmp.ingresoE = ingresoE;
+    newEmp.puestoE= puestoE;
+    newEmp.salarioE= salarioE;
+    newEmp.estatus = "Activo"; 
+    newEmp.persona = {}; // creamos objeto anidado persona
+    newEmp.persona.nomE= nomE;
+    newEmp.persona.apaternoE = apaternoE;
+    newEmp.persona.amaternoE = amaternoE;
+    newEmp.persona.generoE= generoE;
+    newEmp.persona.nacimientoE = nacimientoE;
+    newEmp.persona.rfcE = rfcE;
+    newEmp.persona.curpE = curpE;
+    newEmp.persona.telefonoE= telefonoE;
+    newEmp.persona.emailE= emailE;
+    newEmp.persona.fotoE= fotoE;
+    newEmp.direccion = {}; // creamos objeto anidado usuaeio
+    newEmp.direccion.ciudadE= ciudadE;
+    newEmp.direccion.estadoE = estadoE;
+    newEmp.direccion.cpE = cpE;
+    newEmp.direccion.domicilioE = domicilioE;
+   
     obj.empleado.push(newEmp );
-
-
     let jsonData = JSON.stringify(obj.empleado);
 
     console.log(jsonData);
@@ -197,8 +213,8 @@ function limpiar() {
     document.getElementById("txtSalarioE").value = "";
     document.getElementById("txtemailE").value = "";
     document.getElementById("txtCodigoE").value = "";
-    document.getElementById("txtFotoE").value = "";
-
+    document.getElementById("txtFotoE").src= "img/nada.jpg";
+    document.getElementById("archivoE").value= "";
     document.getElementById("btnModificar").classList.add("disabled");
     document.getElementById("btnEliminar").classList.add("disabled");
     document.getElementById("btnAgregar").classList.remove("disabled");
@@ -228,24 +244,26 @@ function limpiar() {
  
       
     let newEmp = {};
-    newEmp .nomE = nomE;
-    newEmp .apaternoE = apaternoE;
-    newEmp .amaternoE = amaternoE;
-    newEmp .generoE = generoE;
-    newEmp .nacimientoE = nacimientoE;
-    newEmp .rfcE = rfcE;
-    newEmp .curpE = curpE;
-    newEmp .ciudadE = ciudadE;
-    newEmp .estadoE = estadoE;
-    newEmp .cpE = cpE;
-    newEmp .domicilioE = domicilioE;
-    newEmp .telefonoE = telefonoE;
-    newEmp .ingresoE = ingresoE;
-    newEmp .puestoE = puestoE;
-    newEmp .salarioE = salarioE;
-    newEmp .emailE = emailE;
-    newEmp .codigoE = codigoE;
-    newEmp.estatus = "Activo";
+    newEmp.codigoE= codigoE;
+    newEmp.ingresoE = ingresoE;
+    newEmp.puestoE= puestoE;
+    newEmp.salarioE= salarioE;
+    newEmp.estatus = "Activo"; 
+    newEmp.persona = {}; // creamos objeto anidado persona
+    newEmp.persona.nomE= nomE;
+    newEmp.persona.apaternoE = apaternoE;
+    newEmp.persona.amaternoE = amaternoE;
+    newEmp.persona.generoE= generoE;
+    newEmp.persona.nacimientoE = nacimientoE;
+    newEmp.persona.rfcE = rfcE;
+    newEmp.persona.curpE = curpE;
+    newEmp.persona.telefonoE= telefonoE;
+    newEmp.persona.emailE= emailE;
+    newEmp.direccion = {}; // creamos objeto anidado usuaeio
+    newEmp.direccion.ciudadE= ciudadE;
+    newEmp.direccion.estadoE = estadoE;
+    newEmp.direccion.cpE = cpE;
+    newEmp.direccion.domicilioE = domicilioE;
     obj.empleado[indexEmpleado] = newEmp;
     
 }
@@ -266,7 +284,7 @@ function limpiar() {
     if (willDelete) {
         modificarRegistro();
         actualizaTabla();
-        limpiar()
+        limpiar();
       swal("¡Registro modificado con éxito!", {
         icon: "success",
       });
@@ -365,6 +383,34 @@ function eliminarEmpleado() {
     // Mostrar la cadena "cuerpo" en el cuerpo de la tabla con id "tblProductos"
     document.getElementById("tblEmpleados").innerHTML = cuerpo;
 }
+function generaCodigo(fecha){  
+    let codigoE=0;
+    
+    console.log("fecha",fecha);
+    
+    let anio = fecha.substring(2,4);
+     console.log("año",anio);
+    
+    let mes = fecha.substring(5,7);
+      console.log("mes",mes);
+      
+    ultimoCodigo=Number(ultimoCodigo.substring(4,8))+1;
+     console.log("ultimoCodigo",ultimoCodigo);
+    
+    if (ultimoCodigo<10)
+         codigoE=anio+mes+"000"+ ultimoCodigo;
+    else if (ultimoCodigo<100)
+         codigoE=anio+mes+"00"+ ultimoCodigo;
+    else if (ultimoCodigo<1000)
+         codigoE=anio+mes+"0"+ ultimoCodigo;
+    else 
+         codigoE=anio+mes+ultimoCodigo;
+     
+    console.log("codigo",codigoE);
+    
+    document.getElementById("txtCodigoE").value= codigoE;
+    
+}
  function alertCampos() {
     swal({
       title: "¡Advertencia!",
@@ -398,4 +444,3 @@ function mantenimiento() {
                     button: "Aceptar",
                 });
             }
-

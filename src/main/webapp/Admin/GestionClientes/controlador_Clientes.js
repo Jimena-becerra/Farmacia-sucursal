@@ -2,17 +2,48 @@ let indexCliente; // es el índice del arreglo
 let obj = []; // arreglo que se llenará de objetos JSON
   
 var text = '{"cliente":[ ' +
-  '{"nomC" : "Jesús","apaterno" : "Becerra", "amaterno" : "Rodríguez", "generoC" : "Hombre","nacimientoC" : "1950-07-26", "rfcC" : "BERJ500726F37","curpC" : "BERJ500726HGTCDS09", "telefonoC" : "4771654562", "domicilioC" : "Hacienda de echeveste","cpC" : "37100", "ciudadC" : "León","estadoC" : "Guanajuato","registroC" : "2020-03-13","emailC" : "Becerrajesus@gmail.com","foto": "H6.jpeg", "estatus" : "Activo"},'+
-  '{"nomC" : "Lidia","apaterno" : "Torres", "amaterno" : "Gomez", "generoC" : "Mujer", "nacimientoC" : "1980-05-13", "rfcC" : "TOGL800513F30","curpC" : "TOGL800513MGTRMD26", "telefonoC" : "4779487834", "domicilioC" : "Delta de Jerez","cpC" : "37545", "ciudadC" : "León","estadoC" : "Guanajuato","registroC" : "2007-10-23","emailC" : "TorresLidia@gmail.com","foto": "M6.jpeg", "estatus" : "Activo"},'+
-  '{"nomC" : "Estefania","apaterno" : "Lopez", "amaterno" : "Muñoz", "generoC" : "Mujer", "nacimientoC" : "1990-12-07", "rfcC" : "LOME901207F31","curpC" : "LOME901207MGTPÑS21", "telefonoC" : "4773780423", "domicilioC" : "Granjas Echeveste","cpC" : "37100", "ciudadC" : "León","estadoC" : "Guanajuato","registroC" : "2022-09-28","emailC" : "LopezEstefania@gmail.com","foto": "M7.jpeg", "estatus" : "Activo"},'+
-  '{"nomC" : "Osvaldo","apaterno" : "Garcia", "amaterno" : "Hernandez", "generoC" : "Hombre", "nacimientoC" : "1989-04-20", "rfcC" : "GAHO890420F09","curpC" : "GAHO890420HGTRRS09", "telefonoC" : "4774698864", "domicilioC" : "Hacienda del Campestre","cpC" : "37170", "ciudadC" : "León","estadoC" : "Guanajuato","registroC" : "2018-02-27","emailC" : "GarciaOsvaldo@gmail.com","foto": "H7.jpeg", "estatus" : "Activo"},'+
-  '{"nomC" : "Jimena","apaterno" : "Lopez", "amaterno" : "Rodríguez", "generoC" : "Mujer", "nacimientoC" : "1990-10-18", "rfcC" : "LORJ901018F33","curpC" : "LORJ901018MGTPDM17", "telefonoC" : "4772475598", "domicilioC" : "Jardines de la Presa","cpC" : "37109", "ciudadC" : "León","estadoC" : "Guanajuato","registroC" : "2016-08-16","emailC" : "LopezJimena@gmail.com","foto": "M8.jpeg", "estatus" : "Activo"},'+
-  '{"nomC" : "Carlos","apaterno" : "Fernandez", "amaterno" : "Valadez", "generoC" : "Hombre", "nacimientoC" : "2003-03-23", "rfcC" : "FEVC030323F19","curpC" : "FEVC030323HGTRLR29", "telefonoC" : "4779874521", "domicilioC" : "La Condesa","cpC" : "37440", "ciudadC" : "León","estadoC" : "Guanajuato","registroC" : "2021-05-29","emailC" : "FernandezCarlos@gmail.com","foto": "H8.jpeg", "estatus" : "Activo"},'+
-  '{"nomC" : "Denisse","apaterno" : "Palma", "amaterno" : "Ortiz", "generoC" : "Mujer", "nacimientoC" : "1999-02-02", "rfcC" : "PAOD990202F34","curpC" : "PAOD990202MGTLRN23", "telefonoC" : "4771139854", "domicilioC" : "Las Palmas","cpC" : "37425", "ciudadC" : "León","estadoC" : "Guanajuato","registroC" : "2018-04-01","emailC" : "PalmaDenisse@gmail.com","foto": "M9.jpeg", "estatus" : "Activo"},'+
-  '{"nomC" : "Ivan","apaterno" : "Guadian", "amaterno" : "Muñoz", "generoC" : "Hombre", "nacimientoC" : "1997-07-13", "rfcC" : "GUMI970713F39","curpC" : "GUMI970713HGTDÑV39", "telefonoC" : "4776785989", "domicilioC" : "Las Quintas","cpC" : "37125", "ciudadC" : "León","estadoC" : "Guanajuato","registroC" : "2010-10-09","emailC" : "GuadianIvan@gmail.com","foto": "H9.jpeg", "estatus" : "Activo"},'+
-  '{"nomC" : "María","apaterno" : "Moreno", "amaterno" : "Patlan", "generoC" : "Mujer", "nacimientoC" : "1987-10-28", "rfcC" : "MOPM871028F28","curpC" : "MOPM871028MGTRRTR27", "telefonoC" : "4774674432", "domicilioC" : "Parque Chapultepec","cpC" : "37295", "ciudadC" : "León","estadoC" : "Guanajuato","registroC" : "2014-12-17","emailC" : "MorenoMaria@gmail.com","foto": "M10.jpeg", "estatus" : "Activo"},'+
-  '{"nomC" : "Jorge","apaterno" : "Rodríguez", "amaterno" : "Hernandez", "generoC" : "Hombre", "nacimientoC" : "1995-08-26", "rfcC" : "ROHJ950826F06", "curpC" : "ROHJ950826HGTDRR18", "telefonoC" : "4779837656", "domicilioC" : "Real 2000","cpC" : "37355", "ciudadC" : "León","estadoC" : "Guanajuato","registroC" : "2019-05-20","emailC" : "RodriguezJorge@gmail.com", "foto": "H10.jpeg", "estatus" : "Activo"} ] }'; 
-  
+'{ "estatus" : "Activo", '+
+' "persona":{"nomC": "Jesús", "apaterno": "Becerra", "amaterno": "Rodríguez", "generoC": "Hombre", "nacimientoC": "1950-07-26", "curpC": "BERJ500726HGTCDS09", "rfcC": "BERJ500726F37", "emailC": "Becerrajesus@gmail.com", "telefonoC": "4771654562", "registroC" : "2007-10-23","foto": "H6.jpeg"},'+
+' "direccion": {"ciudadC": "León", "estadoC": "Guanajuato", "cpC": "37100", "domicilioC": "Hacienda de echeveste"}' +     
+'},'+
+'{ "estatus" : "Activo", '+
+' "persona": {"nomC": "Lidia", "apaterno": "Torres", "amaterno": "Gomez", "generoC": "Mujer", "nacimientoC": "1980-05-13", "curpC": "TOGL800513MGTRMD26", "rfcC": "TOGL800513F30", "emailC": "TorresLidia@gmail.com", "telefonoC": "4779487834", "registroC" : "2007-10-23","foto": "M6.jpeg"},'+
+' "direccion": {"ciudadC": "León", "estadoC": "Guanajuato", "cpC": "37545", "domicilioC": "Delta de Jerez"}' +     
+'},'+
+'{ "estatus" : "Activo", '+
+' "persona": {"nomC": "Estefania", "apaterno": "Lopez", "amaterno": "Muñoz", "generoC": "Mujer", "nacimientoC": "990-12-07", "curpC": "LOME901207MGTPÑS21", "rfcC": "LOME901207F31", "emailC": "LopezEstefania@gmail.com", "telefonoC": "4773780423", "registroC" : "2022-09-28","foto": "M7.jpeg"},'+
+' "direccion": {"ciudadC": "León", "estadoC": "Guanajuato", "cpC": "37100", "domicilioC": "Granjas de echeveste"}' +     
+'},'+
+'{ "estatus" : "Activo", '+
+' "persona": {"nomC": "Osvaldo", "apaterno": "Garcia", "amaterno": "Hernandez", "generoC": "Hombre", "nacimientoC": "1989-04-20", "curpC": "GAHO890420HGTRRS09", "rfcC": "GAHO890420F09", "emailC": "GarciaOsvaldo@gmail.com", "telefonoC": "4774698864", "registroC" : "2018-02-27","foto": "H7.jpeg"},'+
+' "direccion": {"ciudadC": "León", "estadoC": "Guanajuato", "cpC": "37170", "domicilioC": "Hacienda del Campestre"}' +     
+'},'+
+'{ "estatus" : "Activo", '+
+' "persona": {"nomC": "Jimena", "apaterno": "Lopez", "amaterno": "Rodríguez", "generoC": "Mujer", "nacimientoC": "1990-10-18", "curpC": "LORJ901018MGTPDM17","rfcC": "LORJ901018F33", "emailC": "LopezJimena@gmail.com", "telefonoC": "4772475598", "registroC" : "2016-08-16","foto": "M8.jpeg"},'+
+' "direccion": {"ciudadC": "León", "estadoC": "Guanajuato", "cpC": "37109", "domicilioC": "Jardines de la Presa"}' +     
+'},'+
+
+'{ "estatus" : "Activo", '+
+' "persona": {"nomC": "Carlos", "apaterno": "Fernandez", "amaterno": "Valadez", "generoC": "Hombre", "nacimientoC": "2003-03-23", "curpC": "FEVC030323HGTRLR29", "rfcC": "BERJ500726F37", "emailC": "FernandezCarlos@gmail.com", "telefonoC": "4779874521", "registroC" : "2021-05-29","foto": "H8.jpeg"},'+
+' "direccion": {"ciudadC": "León", "estadoC": "Guanajuato", "cpC": "37440", "domicilioC": "La Condesa"}' +     
+'},'+
+'{ "estatus" : "Activo", '+
+' "persona": {"nomC": "Denisse", "apaterno": "Palma", "amaterno": "Ortiz", "generoC": "Mujer", "nacimientoC": "1999-02-02", "curpC": "PAOD990202MGTLRN23", "rfcC": "PAOD990202F34", "emailC": "PalmaDenisse@gmail.com", "telefonoC": "4771139854", "registroC" : "2018-04-01","foto": "M9.jpeg"},'+
+' "direccion": {"ciudadC": "León", "estadoC": "Guanajuato", "cpC": "37425", "domicilioC": "Las Palmas"}' +     
+'},'+
+'{ "estatus" : "Activo", '+
+' "persona": {"nomC": "Ivan", "apaterno": "Guadian", "amaterno": "Muñoz", "generoC": "Hombre", "nacimientoC": "1997-07-13", "curpC": "GUMI970713HGTDÑV39","rfcC": "GUMI970713F39", "emailC": "GuadianIvan@gmail.com", "telefonoC": "4776785989", "registroC" : "2010-10-09","foto": "H9.jpeg"},'+
+' "direccion": {"ciudadC": "León", "estadoC": "Guanajuato", "cpC": "37125", "domicilioC": "Las Quintas"}' +     
+'},'+
+'{ "estatus" : "Activo", '+
+' "persona": {"nomC": "María", "apaterno": "Moreno", "amaterno": "Patlan", "generoC": "Mujer", "nacimientoC": "1987-10-28", "curpC": "MOPM871028MGTRRTR27", "rfcC": "MOPM871028F28", "emailC": "MorenoMaria@gmail.com", "telefonoC": "4774674432", "registroC" : "2014-12-17","foto": "M10.jpeg"},'+
+' "direccion": {"ciudadC": "León", "estadoC": "Guanajuato", "cpC": "37295", "domicilioC": "Parque Chapultepec"}' +     
+'},'+
+'{ "estatus" : "Activo", '+
+' "persona":{"nomC": "Jorge", "apaterno": "Rodríguez", "amaterno": "Hernandez", "generoC": "Hombre", "nacimientoC": "1995-08-26", "curpC": "ROHJ950826HGTDRR18", "rfcC": "ROHJ950826F06", "emailC": "RodriguezJorge@gmail.com", "telefonoC": "4779837656","registroC" : "2019-05-20", "foto": "H10.jpeg"},'+
+' "direccion": {"ciudadC": "León", "estadoC": "Guanajuato", "cpC": "37355", "domicilioC": "Real 2000"}' +     
+'}]}';
+
 obj = JSON.parse(text);
 console.log(obj);
 actualizaTabla();
@@ -23,21 +54,19 @@ function actualizaTabla() {
         let registro =
                 '<tr onclick="selectCliente(' + obj.cliente.indexOf(elemento) + ');">' +
                 '<td>' + obj.cliente.indexOf(elemento) + '</td>' +
-                '<td>' + elemento.nomC + '</td>' +
-                '<td>' + elemento.apaterno + '</td>' +
-                '<td>' + elemento.amaterno + '</td>' +
-                '<td>' + elemento.generoC + '</td>' +
-                '<td>' + elemento.nacimientoC + '</td>' +
-                '<td>' + elemento.rfcC + '</td>' +
-                '<td>' + elemento.curpC + '</td>' +
-                '<td>' + elemento.telefonoC + '</td>' +
-                '<td>' + elemento.domicilioC + '</td>' +
-                '<td>' + elemento.cpC + '</td>' +
-                '<td>' + elemento.ciudadC + '</td>' +
-                '<td>' + elemento.estadoC + '</td>' +
-                '<td>' + elemento.registroC + '</td>' +
-                '<td>' + elemento.emailC + '</td>' +
-                '<td> <img src="img/' + elemento.foto + ' " width="100" > </td>' +
+                 '<td>' + elemento.persona.nomC + " " + elemento.persona.apaterno +  " " + elemento.persona.amaterno +'</td>' +
+                '<td>' + elemento.persona.generoC + '</td>' +
+                '<td>' + elemento.persona.nacimientoC + '</td>' +
+                '<td>' + elemento.persona.rfcC + '</td>' +
+                '<td>' + elemento.persona.curpC + '</td>' +
+                '<td>' + elemento.persona.telefonoC + '</td>' +
+                '<td>' + elemento.direccion.domicilioC + '</td>' +
+                '<td>' + elemento.direccion.cpC + '</td>' +
+                '<td>' + elemento.direccion.ciudadC + '</td>' +
+                '<td>' + elemento.direccion.estadoC + '</td>' +
+                '<td>' + elemento.persona.registroC + '</td>' +
+                '<td>' + elemento.persona.emailC + '</td>' +
+                '<td> <img src="img/' + elemento.persona.foto + ' " width="100" > </td>' +
                 '<td>' + elemento.estatus + '</td></tr>';
 
         cuerpo += registro;
@@ -47,23 +76,24 @@ function actualizaTabla() {
 //Segunda funcion 
 // selección del cliente de acuerdo al índice del arreglo
 function selectCliente(index) {
-    document.getElementById("txtnom").value = obj.cliente[index].nomC;
-    document.getElementById("txtpaternoC").value = obj.cliente[index].apaterno;
-    document.getElementById("txtmaternoC").value = obj.cliente[index].amaterno;
-    document.getElementById("txtgeneroC").value = obj.cliente[index].generoC;
-    document.getElementById("txtNacimientoC").value = obj.cliente[index].nacimientoC;
-    document.getElementById("txtrfcC").value = obj.cliente[index].rfcC;
-    document.getElementById("txtcurpC").value = obj.cliente[index].curpC;
-    document.getElementById("txtelefonoC").value = obj.cliente[index].telefonoC;
-    document.getElementById("txtdomicilioC").value = obj.cliente[index].domicilioC;
-    document.getElementById("txtcpC").value = obj.cliente[index].cpC;
-    document.getElementById("txtciudadC").value = obj.cliente[index].ciudadC;
-    document.getElementById("txtestadoC").value = obj.cliente[index].estadoC;
-    document.getElementById("txtregistroC").value = obj.cliente[index].registroC;
-    document.getElementById("txtemailC").value = obj.cliente[index].emailC;
+    document.getElementById("txtnom").value = obj.cliente[index].persona.nomC;
+    document.getElementById("txtpaternoC").value = obj.cliente[index].persona.apaterno;
+    document.getElementById("txtmaternoC").value = obj.cliente[index].persona.amaterno;
+    document.getElementById("txtgeneroC").value = obj.cliente[index].persona.generoC;
+    document.getElementById("txtNacimientoC").value = obj.cliente[index].persona.nacimientoC;
+    document.getElementById("txtrfcC").value = obj.cliente[index].persona.rfcC;
+    document.getElementById("txtcurpC").value = obj.cliente[index].persona.curpC;
+    document.getElementById("txtelefonoC").value = obj.cliente[index].persona.telefonoC;
+    document.getElementById("txtdomicilioC").value = obj.cliente[index].direccion.domicilioC;
+    document.getElementById("txtcpC").value = obj.cliente[index].direccion.cpC;
+    document.getElementById("txtciudadC").value = obj.cliente[index].direccion.ciudadC;
+    document.getElementById("txtestadoC").value = obj.cliente[index].direccion.estadoC;
+    document.getElementById("txtregistroC").value = obj.cliente[index].persona.registroC;
+    document.getElementById("txtemailC").value = obj.cliente[index].persona.emailC;
  
     let ruta = 'img/';
-        document.getElementById("txtFoto").src = ruta + obj.cliente[index].foto;
+        document.getElementById("txtFoto").src = ruta + obj.cliente[index].persona.foto;
+        document.getElementById("archivo").value =  "";
     
     document.getElementById("btnModificar").classList.remove("disabled");
     document.getElementById("btnEliminar").classList.remove("disabled");
@@ -125,23 +155,27 @@ function agregarCliente() {
     foto = document.getElementById("archivo").value;
     
     let newClien = {};
-    newClien.nomC = nomC;
-    newClien.apaterno = apaterno;
-    newClien.amaterno = amaterno;
-    newClien.generoC = generoC;
-    newClien.nacimientoC = nacimientoC;
-    newClien.rfcC = rfcC;
-    newClien.curpC = curpC;
-    newClien.telefonoC = telefonoC;
-    newClien.domicilioC = domicilioC;
-    newClien.cpC = cpC;
-    newClien.ciudadC = ciudadC;
-    newClien.estadoC = estadoC;
-    newClien.registroC = registroC;
-    newClien.emailC = emailC;
-    newClien.foto = foto;
-    newClien.estatus = "Activo";
+     newClien.estatus = "Activo";
+    newClien.persona = {};
+    newClien.persona.nomC = nomC;
+    newClien.persona.apaterno = apaterno;
+    newClien.persona.amaterno = amaterno;
+    newClien.persona.generoC = generoC;
+    newClien.persona.nacimientoC = nacimientoC;
+    newClien.persona.rfcC = rfcC;
+    newClien.persona.curpC = curpC;
+    newClien.persona.telefonoC = telefonoC;
+    newClien.persona.registroC = registroC;
+    newClien.persona.emailC = emailC;
+    newClien.persona.foto = foto;
+    newClien.direccion = {};
+    newClien.direccion.domicilioC = domicilioC;
+    newClien.direccion.cpC = cpC;
+    newClien.direccion.ciudadC = ciudadC;
+    newClien.direccion.estadoC = estadoC;
+
     obj.cliente.push(newClien);
+    let jsonData = JSON.stringify(obj.cliente);
 
     alertGoodJobs();
     limpiar();
@@ -165,7 +199,9 @@ function limpiar() {
     document.getElementById("txtestadoC").value = "";
     document.getElementById("txtregistroC").value = "";
     document.getElementById("txtemailC").value = "";
-    document.getElementById("txtFoto").value = "";
+   
+    document.getElementById("txtFoto").src= "img/nada.jpg";
+    document.getElementById("archivo").value= "";
 
     document.getElementById("btnModificar").classList.add("disabled");
     document.getElementById("btnEliminar").classList.add("disabled");
@@ -193,21 +229,24 @@ function limpiar() {
     emailC = document.getElementById("txtemailC").value;
 
     let newClien = {};
-    newClien.nomC = nomC;
-    newClien.apaterno = apaterno;
-    newClien.amaterno = amaterno;
-    newClien.generoC = generoC;
-    newClien.nacimientoC = nacimientoC;
-    newClien.rfcC = rfcC;
-    newClien.curpC = curpC;
-    newClien.telefonoC = telefonoC;
-    newClien.domicilioC = domicilioC;
-    newClien.cpC = cpC;
-    newClien.ciudadC = ciudadC;
-    newClien.estadoC = estadoC;
-    newClien.registroC = registroC;
-    newClien.emailC = emailC;
     newClien.estatus = "Activo";
+    newClien.persona = {};
+    newClien.persona.nomC = nomC;
+    newClien.persona.apaterno = apaterno;
+    newClien.persona.amaterno = amaterno;
+    newClien.persona.generoC = generoC;
+    newClien.persona.nacimientoC = nacimientoC;
+    newClien.persona.rfcC = rfcC;
+    newClien.persona.curpC = curpC;
+    newClien.persona.telefonoC = telefonoC;
+    newClien.persona.registroC = registroC;
+    newClien.persona.emailC = emailC;
+    newClien.direccion = {};
+    newClien.direccion.domicilioC = domicilioC;
+    newClien.direccion.cpC = cpC;
+    newClien.direccion.ciudadC = ciudadC;
+    newClien.direccion.estadoC = estadoC;
+ 
     obj.cliente[indexCliente] = newClien;
     
 }
